@@ -54,6 +54,8 @@ A documentação interativa fica disponível em `http://127.0.0.1:8000/docs`.
 | DELETE | /tasks/{task_id}   | Remove uma tarefa           | 204 No Content     |
 
 ## Estrutura do projeto
+
+```
 taskflow-api/
 ├── app/
 │ ├── main.py # Rotas e inicialização da aplicação
@@ -62,6 +64,7 @@ taskflow-api/
 │ └── database.py # Configuração da conexão com o banco
 ├── requirements.txt
 └── README.md
+```
 
 ## Próximos passos
 
