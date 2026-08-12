@@ -13,8 +13,9 @@ API REST para gerenciamento de tarefas, desenvolvida como projeto de estudo em b
 
 ## Funcionalidades
 
+- Cadastro e login de usuário com autenticação JWT
 - Criar tarefa (`POST /tasks`)
-- Listar todas as tarefas (`GET /tasks`)
+- Listar todas as tarefas do usuário autenticado (`GET /tasks`)
 - Buscar tarefa por ID (`GET /tasks/{task_id}`)
 - Atualizar tarefa (`PUT /tasks/{task_id}`)
 - Remover tarefa (`DELETE /tasks/{task_id}`)
@@ -68,6 +69,5 @@ taskflow-api/
 
 ## Próximos passos
 
-- Autenticação com JWT
 - Testes automatizados com pytest
 - Containerização com Docker
