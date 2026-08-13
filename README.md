@@ -67,7 +67,13 @@ taskflow-api/
 └── README.md
 ```
 
+## Rodando com Docker
+
+```bash
+docker build -t taskflow-api .
+docker run -p 8000:8000 --env-file .env taskflow-api
+```
+
 ## Próximos passos
 
-- Testes automatizados com pytest
-- Containerização com Docker
+- Deploy em nuvem (Render, Railway ou similar)
