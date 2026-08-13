@@ -10,8 +10,7 @@ class TaskResponse(BaseModel):
     description: str | None = None
     done: bool
 
-    class Config:
-        from_attributes = True
+model_config = {"from_attributes": True}
 
 
 class UserCreate(BaseModel):
@@ -23,9 +22,8 @@ class UserResponse(BaseModel):
     id: int
     email: str
 
+model_config = {"from_attributes": True}
 
-    class Config:
-        from_attributes = True
 
 class Token(BaseModel):
     access_token: str
