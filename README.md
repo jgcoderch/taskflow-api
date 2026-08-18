@@ -1,5 +1,5 @@
 # TaskFlow API
-
+![Tests](https://github.com/jgcoderch/taskflow-api/actions/workflows/tests.yml/badge.svg)
 API REST para gerenciamento de tarefas, desenvolvida como projeto de estudo em back-end com Python.
 
 ## Tecnologias
