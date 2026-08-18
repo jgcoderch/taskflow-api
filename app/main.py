@@ -3,12 +3,11 @@ from fastapi import HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from jose import JWTError
 from sqlalchemy.orm import Session
-from app.database import Base, engine, SessionLocal
+from app.database import SessionLocal
 from app import models
 from app.schemas import TaskCreate, TaskResponse, UserCreate, UserResponse, Token
 from app.security import hash_password, verify_password, create_access_token, decode_access_token
 
-Base.metadata.create_all(bind=engine)
 
 
 app= FastAPI()
