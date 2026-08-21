@@ -8,6 +8,10 @@ API REST para gerenciamento de tarefas, desenvolvida como projeto de estudo em b
 
 🔗 [https://taskflow-api-y395.onrender.com/docs](https://taskflow-api-y395.onrender.com/docs)
 
+## Frontend
+
+Interface web que consome esta API: [taskflow-frontend](https://github.com/jgcoderch/taskflow-frontend)
+
 ## Tecnologias
 
 - **Python 3.13**

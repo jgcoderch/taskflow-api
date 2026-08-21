@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Depends
 from fastapi import HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
+from fastapi.middleware.cors import CORSMiddleware
 from jose import JWTError
 from sqlalchemy.orm import Session
 from app.database import SessionLocal
@@ -10,7 +11,15 @@ from app.security import hash_password, verify_password, create_access_token, de
 
 
 
-app= FastAPI()
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 def get_db():
