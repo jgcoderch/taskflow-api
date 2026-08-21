@@ -37,6 +37,24 @@ def test_list_tasks_only_shows_own(client):
     assert response.json() == []
 
 
+def test_update_task_partial_done_toggle(client):
+    headers = register_and_login(client, "toggle@teste.com", "senha123")
+
+    created = client.post("/tasks", json={
+        "title": "Tarefa",
+        "description": "desc"
+    }, headers=headers)
+    task_id = created.json()["id"]
+
+    response = client.put(f"/tasks/{task_id}", json={"done": True}, headers=headers)
+
+    assert response.status_code == 200
+    data = response.json()
+    assert data["done"] is True
+    assert data["title"] == "Tarefa"
+    assert data["description"] == "desc"
+
+
 def test_cannot_delete_others_task(client):
     headers_a = register_and_login(client, "dono@teste.com", "senha123")
     headers_b = register_and_login(client, "invasor@teste.com", "senha123")

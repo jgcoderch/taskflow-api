@@ -6,7 +6,7 @@ from jose import JWTError
 from sqlalchemy.orm import Session
 from app.database import SessionLocal
 from app import models
-from app.schemas import TaskCreate, TaskResponse, UserCreate, UserResponse, Token
+from app.schemas import TaskCreate, TaskUpdate, TaskResponse, UserCreate, UserResponse, Token
 from app.security import hash_password, verify_password, create_access_token, decode_access_token
 
 
@@ -81,12 +81,14 @@ def get_task(task_id: int, db: Session = Depends(get_db), current_user: models.U
 
 
 @app.put("/tasks/{task_id}", response_model=TaskResponse)
-def update_task(task_id: int, updated: TaskCreate, db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)):
+def update_task(task_id: int, updated: TaskUpdate, db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)):
     task = db.query(models.Task).filter(models.Task.id == task_id, models.Task.owner_id == current_user.id).first()
     if task is None:
         raise HTTPException(status_code=404, detail="Task not found")
-    task.title = updated.title
-    task.description = updated.description
+
+    for field, value in updated.model_dump(exclude_unset=True).items():
+        setattr(task, field, value)
+
     db.commit()
     db.refresh(task)
     return task
